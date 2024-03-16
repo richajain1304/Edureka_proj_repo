@@ -6,6 +6,9 @@ pipeline{
     }
     environment{
 	    DOCKERHUB_CREDENTIALS=credentials('dockerhub_cred')
+	    registry = "richajain473/edureka_proj"
+	    registryCredential = 'dockerhub_cred'
+            dockerImage = ''
     }
 	agent any
       stages{
@@ -53,6 +56,12 @@ pipeline{
 		 }
 		 
 	 }
-          
+        stage('Building our image') {
+             steps{
+                   script {
+                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                   }
+            }
+        }  
       }
 }
