@@ -75,5 +75,17 @@ pipeline{
 		  sh 'kubectl --help'
 		}
 	}
+	stage('Deploy to Kubernetes') {
+
+            steps {
+               
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'deployment.yml',
+                    enableConfigSubstitution: true
+                )
+
+            }
+        }
       }
 }
