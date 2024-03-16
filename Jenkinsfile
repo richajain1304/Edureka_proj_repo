@@ -4,6 +4,9 @@ pipeline{
        
         maven 'mymaven'
     }
+    environment{
+	    DOCKERHUB_CREDENTIALS=credentials('dockerhub_cred')
+    }
 	agent any
       stages{
            stage('Checkout the code'){
@@ -44,7 +47,12 @@ pipeline{
                   sh 'mvn package'
               }
           }
-	     
+	 stage('copy ar file to current dir'){
+		 steps{
+		   sh 'cp /var/lib/jenkins/workspace/Edureka_proj/target/addressbook.war .'
+		 }
+		 
+	 }
           
       }
 }
