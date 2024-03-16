@@ -72,7 +72,7 @@ pipeline{
 	}
 	stage('deploy to kubernetes'){
 		steps{
-		  sh 'kubectl get pods'
+		  sh 'kubectl --help'
 		}
 	}
       }
