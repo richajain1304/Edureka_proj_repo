@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
        - name: app
-         image: edu123/devopsimage:4
+         image: richajain473/edureka_proj:$BUILD_NUMBER
         
 ---
 kind: Service
