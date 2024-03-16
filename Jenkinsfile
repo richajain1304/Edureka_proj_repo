@@ -58,13 +58,19 @@ pipeline{
 	 }
         stage('Building image') {
              steps{
-		   sh 'docker ps'
+		  
                    sh 'docker build -t myimage:$BUILD_NUMBER .'   
             }
         }  
 	stage('login to dokerhub'){
 		steps{
 		  sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+		}
+	}
+	stage('push to dokerhub'){
+		steps{
+		  sh 'docker tag myimage:$BUILD_NUMBER richajain473/edureka_proj:firstimage'
+		  sh 'docer push richajain473/edureka_proj:firstimage'
 		}
 	}
       }
