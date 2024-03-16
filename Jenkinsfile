@@ -6,11 +6,8 @@ pipeline{
     }
     environment{
 	    DOCKERHUB_CREDENTIALS=credentials('dockerhub_cred')
-	    registry = "richajain473/edureka_proj"
-	    registryCredential = 'dockerhub_cred'
-            dockerImage = ''
     }
-	agent any
+      agent any
       stages{
            stage('Checkout the code'){
 	    
