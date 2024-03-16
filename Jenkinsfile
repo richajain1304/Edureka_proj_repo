@@ -58,6 +58,7 @@ pipeline{
 	 }
         stage('Building image') {
              steps{
+		   sh 'docker ps'
                    sh 'docker build -t myimage:$BUILD_NUMBER .'   
             }
         }  
