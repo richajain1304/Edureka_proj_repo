@@ -70,22 +70,6 @@ pipeline{
 		  sh 'docker push richajain473/edureka_proj:$BUILD_NUMBER'
 		}
 	}
-	stage('deploy to kubernetes'){
-		steps{
-		  sh 'kubectl --help'
-		}
-	}
-	stage('Deploy to Kubernetes') {
-
-            steps {
-               
-                kubernetes(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'deployment.yml',
-                    enableConfigSubstitution: true
-                )
-
-            }
-        }
+	
       }
 }
