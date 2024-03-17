@@ -66,8 +66,8 @@ pipeline{
 	}
 	stage('push to dokerhub'){
 		steps{
-		  sh 'docker tag myimage:$BUILD_NUMBER richajain473/edureka_proj:$BUILD_NUMBER'
-		  sh 'docker push richajain473/edureka_proj:$BUILD_NUMBER'
+		  sh 'docker tag myimage:$BUILD_NUMBER richajain473/edureka_proj:firstimage'
+		  sh 'docker push richajain473/edureka_proj:firstimage'
 		}
 	}
 	
